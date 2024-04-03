@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="binsearch.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <rect
+       x="121.57589"
+       y="292.43138"
+       width="51.498616"
+       height="56.080917"
+       id="rect1640" />
+    <rect
+       x="768.84083"
+       y="292.59057"
+       width="34.946326"
+       height="41.984503"
+       id="rect1634" />
+    <rect
+       x="414.47986"
+       y="307.45942"
+       width="287.26977"
+       height="69.702411"
+       id="rect1578" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1250">
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:1;"
+         offset="0"
+         id="stop1246" />
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:0;"
+         offset="1"
+         id="stop1248" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1250"
+       id="linearGradient1252"
+       x1="39.447119"
+       y1="226.48092"
+       x2="201.39927"
+       y2="226.48092"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.99437388"
+     inkscape:cx="284.6012"
+     inkscape:cy="183.53258"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1906"
+     inkscape:window-height="1037"
+     inkscape:window-x="5"
+     inkscape:window-y="5"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <rect
+       style="fill:#cccccc;stroke:#4d4d4d;stroke-width:0.799999"
+       id="rect787"
+       width="161.81549"
+       height="16.528559"
+       x="39.335953"
+       y="235.19807" />
+    <path
+       style="fill:url(#linearGradient1252);stroke:#4d4d4d;stroke-width:0;fill-opacity:1;stroke-dasharray:none"
+       d="M 200.99928,234.83864 200.8877,218.17793 39.488168,234.82911"
+       id="path1051" />
+    <ellipse
+       style="fill:#666666;stroke:#4d4d4d;stroke-width:0;stroke-dasharray:none"
+       id="path1358"
+       cx="160.1333"
+       cy="243.55261"
+       rx="5.9103837"
+       ry="5.8637323" />
+    <rect
+       style="fill:#999999;stroke:#4d4d4d;stroke-width:0.8;stroke-dasharray:none"
+       id="rect1466"
+       width="16.103783"
+       height="16.127241"
+       x="113.07201"
+       y="235.45392" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.7611px;font-family:'Libertinus Math';-inkscape-font-specification:'Libertinus Math';white-space:pre;inline-size:0;fill:#999999;stroke:#4d4d4d;stroke-width:0;stroke-dasharray:none"
+       x="109.88287"
+       y="263.28696"
+       id="text1574"><tspan
+         id="tspan1572"
+         style="stroke-width:0"
+         x="109.88287"
+         y="263.28696" /></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0,177)"
+       id="text1576"
+       style="font-size:29.3333px;font-family:'Libertinus Math';-inkscape-font-specification:'Libertinus Math';white-space:pre;shape-inside:url(#rect1578);display:inline;fill:#1a1a1a;stroke:#4d4d4d;stroke-width:0;stroke-dasharray:none"><tspan
+         x="414.48047"
+         y="334.12913"
+         id="tspan948">$m = \lfloor \frac{l+r}{2} </tspan><tspan
+         x="414.48047"
+         y="370.79576"
+         id="tspan950">\rfloor$</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0,177)"
+       id="text1632"
+       style="font-size:29.3333px;font-family:'Libertinus Math';-inkscape-font-specification:'Libertinus Math';white-space:pre;shape-inside:url(#rect1634);display:inline;fill:#1a1a1a;stroke:#4d4d4d;stroke-width:0;stroke-dasharray:none"><tspan
+         x="768.83984"
+         y="319.25999"
+         id="tspan952">r</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0,177)"
+       id="text1638"
+       style="font-size:29.3333px;font-family:'Libertinus Math';-inkscape-font-specification:'Libertinus Math';white-space:pre;shape-inside:url(#rect1640);display:inline;fill:#1a1a1a;stroke:#4d4d4d;stroke-width:0;stroke-dasharray:none"><tspan
+         x="121.57617"
+         y="319.10179"
+         id="tspan954">l</tspan></text>
+  </g>
+</svg>
