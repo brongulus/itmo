@@ -77,7 +77,7 @@ fill=green!30]
 + RAM Model - Any cell of memory can be accessed in constant time.
 + Time complexity depends on the number of inputs.
 + For the illustrated sum of array elements algorithm, the number of operations are:
-	#+begin_src c++
+  #+begin_src c++
   int s = 0; // 1
   for(int i = 0; i < n; i++) { // 2n : n i-value increments, n comp. i < n
     s += a[i]; // 3n: load n elements, n additions, n storages into s
@@ -93,48 +93,48 @@ fill=green!30]
 *** Time complexity (Examples)
 1.
   #+BEGIN_SRC c++
-	for(int i = 0; i < n; i++) // (n)
-	  for(int j = 0; i < n; j++) // (n)
+  for(int i = 0; i < n; i++) // (n)
+    for(int j = 0; i < n; j++) // (n)
   #+END_SRC
-	/n/ iterations of inner loop and /n/ iterations of outer, hence this is O(n^{2}).
+  /n/ iterations of inner loop and /n/ iterations of outer, hence this is O(n^{2}).
 2. 
  #+BEGIN_SRC c++
    for(int i = 0; i < n; i++) // (n)
      for(int j = 0; i < i; j++) // (0+1+...n-1)
  #+END_SRC
-	Hence this is $\frac{(n-1)(n)}{2} + n$ or $\frac{n^{2}+n}{2}$ which is O(n^{2}).
+  Hence this is $\frac{(n-1)(n)}{2} + n$ or $\frac{n^{2}+n}{2}$ which is O(n^{2}).
 3. 
  #+BEGIN_SRC c++
-	int i = 0;
-	while(i * i < n) i++;
+  int i = 0;
+  while(i * i < n) i++;
  #+END_SRC
-	For termination, $i^{2} \geq n$, hence $i \geq \sqrt{n}$ so /i/ is incremented till $\sqrt{n}$ i.e. O($\sqrt{n}$).
+  For termination, $i^{2} \geq n$, hence $i \geq \sqrt{n}$ so /i/ is incremented till $\sqrt{n}$ i.e. O($\sqrt{n}$).
 4.
  #+BEGIN_SRC c++
-	int i = 1;
-	while(i < n) i *= 2;
+  int i = 1;
+  while(i < n) i *= 2;
  #+END_SRC
-	For /k/ iterations, i = 2^{k}, hence for termination $2^{k} \geq n, k \geq log_{2}n$ i.e. O(log_{2}n).
+  For /k/ iterations, i = 2^{k}, hence for termination $2^{k} \geq n, k \geq log_{2}n$ i.e. O(log_{2}n).
 5.
  #+BEGIN_SRC c++
   def: f(n)
        if(n == 0) return
        f(n-1)
  #+END_SRC
-	Here f(n) calls f(n-1) which in turn calls f(n-2) & so on till n is 0. Hence this is O(n).
+  Here f(n) calls f(n-1) which in turn calls f(n-2) & so on till n is 0. Hence this is O(n).
 6.
  #+BEGIN_SRC c++
-	def: f(n)
-			 if(n == 0) return
-			 f(n/2)
+  def: f(n)
+       if(n == 0) return
+       f(n/2)
  #+END_SRC 
   Here f(n) calls f(n/2) and so on. Each iteration the value is halved hence O(log_{2}n).
 7.
  #+BEGIN_SRC c++
-	def: f(n)
-			 if(n == 0) return
-			 f(n/2)
-			 f(n/2)
+  def: f(n)
+       if(n == 0) return
+       f(n/2)
+       f(n/2)
  #+END_SRC
  Here f(n) calls f(n/2) twice and at each stage it would be called 2^{i} times, hence this is 2^{log_{2}n} or O(n).
 8. If f(n) called f(n/2) thrice then it would be 3^{log_{2}n} or n^{log_{2}3} or O(n^{1.6}) (approx.).
@@ -153,7 +153,7 @@ fill=green!30]
  Worst case: O(n^{2}) (descending)
 2. Merge Sort : Assume we have two sorted arrays /a/ and /b/ of sizes /n/ and /m/, we wish to store their sorted merged array in /c/.
  #+BEGIN_SRC c++
- 	int n = a.size(), m = b.size();
+    int n = a.size(), m = b.size();
   int i = 0, j = 0, k = 0;
   vector<int> c(n+m);
   while(i < n || j < m) {
@@ -182,45 +182,45 @@ fill=green!30]
     c = sort(c); // This is T(n/2)
     return merge(b, c) // O(n)
  #+END_SRC
-	 Here T(n) = 2*T(n/2) + O(n)
+   Here T(n) = 2*T(n/2) + O(n)
 *** TODO Master Theorem
 *** Tasks
 1. For each algorithm below, calculate its time complexity. \\
-	 a)
-	 #+begin_src c++
+   a)
+   #+begin_src c++
      for i in range(n):
        j = 0;
        while(j*j < i): j++;
    #+end_src
-	 b)
-	 #+begin_src c++
+   b)
+   #+begin_src c++
      for i in range(n):
        j = i;
        while(j > 0): j /= 2;
    #+end_src
-	 c)
-	 #+begin_src c++
+   c)
+   #+begin_src c++
      def f(n):
        if n == 0: return 1
        else return 5 * f(n/3)
    #+end_src
-	 d)
-	 #+begin_src c++
+   d)
+   #+begin_src c++
      def f(n):
        if n == 0: return 1
        else return f(n/3) + f(n/3)
    #+end_src
 2. Prove using mathematical induction that if: \\
-	 i. T(n) = 2T(n/2) + n, then T(n) = \Omega(n log n) (lower bound) \\
-	 ii. T(n) = 2T(n/2 + 20) + n, then T(n) = O(n log n) \\
-	 iii. T(n) = log n T(n/log n) + n, then T(n) = O(n log n) \\
-	 iv. T(n) = 2T($\sqrt{n}$) + 1, then T(n) = O(log n) 
+   i. T(n) = 2T(n/2) + n, then T(n) = \Omega(n log n) (lower bound) \\
+   ii. T(n) = 2T(n/2 + 20) + n, then T(n) = O(n log n) \\
+   iii. T(n) = log n T(n/log n) + n, then T(n) = O(n log n) \\
+   iv. T(n) = 2T($\sqrt{n}$) + 1, then T(n) = O(log n) 
 3. You are given two arrays /a/ and /b/ sorted in non-decreasing order. \\
-	 i. Determine if there is a number that occurs in both arrays in O(n) time. \\
-	 ii. Find /i/ and /j/ such that the difference |a_{i} - b_{j}| is minimal in O(n) \\
-	 iii. Given a number S, find /i/ and /j/ such that a_{i}+b_{j} = S in O(n).\\
-	 iv. Find number of pairs (/i,j/) such that a_{i} = b_{j} in O(n) \\
-	 v. Find number of pairs (/i,j/) such that a_{i} > b_{j} in O(n)
+   i. Determine if there is a number that occurs in both arrays in O(n) time. \\
+   ii. Find /i/ and /j/ such that the difference |a_{i} - b_{j}| is minimal in O(n) \\
+   iii. Given a number S, find /i/ and /j/ such that a_{i}+b_{j} = S in O(n).\\
+   iv. Find number of pairs (/i,j/) such that a_{i} = b_{j} in O(n) \\
+   v. Find number of pairs (/i,j/) such that a_{i} > b_{j} in O(n)
 4. Give an array /a/, the pair (/i,j/) such that i < j and a_{i} > a_{j} is called _inversion_. Find number of inversions in array /a/ in O(n log n).
 5. Show that with correct implementation, merge sort is /stable/ (i.e. relative order of equal elements does not change).
 6. Show how to implement merge sort with a single additional array of size /n/, without constructing new arrays in each recursive call.
@@ -233,24 +233,24 @@ fill=green!30]
 + They can be classified according to the operations that are possible in the respective classes.
 *** Binary Heap
 + Heaps/ Priority Queues are the class of data structure that can perform the following operations:
-	1. Insert an element: =insert(x)=
-	2. Remove minimum element: =rem_min(x)=
+  1. Insert an element: =insert(x)=
+  2. Remove minimum element: =rem_min(x)=
 + Array based construction:
-	Let first /n/ elements of arrray /a/ form the heap, then =insert(x)= would add /x/ at index /n/ and increment heap size.
-	#+BEGIN_SRC c++
+  Let first /n/ elements of arrray /a/ form the heap, then =insert(x)= would add /x/ at index /n/ and increment heap size.
+  #+BEGIN_SRC c++
     def insert(x): // O(1)
       a[n] = x;
       n++;
-	#+END_SRC
+  #+END_SRC
   For the removal of minimum element, first we find its index, then swap it with the last element and pop it. (The swap's done so that the array is contiguous after the removal).
-	#+begin_src c++
+  #+begin_src c++
     j = 0;
     for (int i = 0; i < n; i++) { // O(n)
       if (a[i] < a[j]) j = i;
     }
     swap(a[j], a[n-1]);
     return a[--n];
-	#+end_src
+  #+end_src
 + If the array is sorted in decreasing order, then complexity of =rem_min= becomes O(1) /but/ the time complexity of =insert(x)= becomes O(n)!
 + So an array, sorted or otherwise is not suitable for forming a heap.
 + Enter _Binary Heap_ and it brings alongwith it O(log n) complexity for both insertion and removal.
@@ -261,8 +261,8 @@ fill=green!30]
 \begin{forest}
  [0, for tree={circle,draw}
     [1 [3 [7] [8]]
-			 [4 [9]]]
-		[2 [5] [6]]] 
+       [4 [9]]]
+    [2 [5] [6]]] 
 \end{forest}
 \end{center}
 #+END_EXPORT
@@ -292,7 +292,7 @@ fill=green!30]
     }
   #+end_src
 + =rem_min()=: Minimum element is the root. On removal of root, the new root is the last element of the tree but that destroys the heap property hence it must be reconstructed; =min(LC, RC)= is swapped with the parent root till its satisfied.
-	#+begin_src c++
+  #+begin_src c++
     // Sift-down Operation
     int pos = 0;
     h[pos] = h[--n];
@@ -323,16 +323,16 @@ fill=green!30]
 6. How to make a data structure out of two binary heaps that can simultaneously find and remove both the maximum and the minimum elements?
 7. Based on the binary heaps, make a data structure that can find and remove the median element (n/2 element in sorted order).
 8. Peter wanted to build a heap in O(n) time, but he did it not quite right:
-	 #+begin_src c++
+   #+begin_src c++
      for(int i = 0; i < n; i++) sift-down(i);
    #+end_src
-	 Show that this algorithm sometimes does not work.
+   Show that this algorithm sometimes does not work.
 ** Quicksort, Order Statistics
 What is a randomized algorithm? An additional random input is fed into the algorithm.
 *** How do randomized algorithms work?
 + Pick a random element /x/, divide the array into two parts having /elements less than x/ and /otherwise/.
 + Repeat for each subpart with random seed till we have array of size 1.
-	TODO: insert figure
+  TODO: insert figure
   #+begin_src c++
     // sort(l, r):
     if(r - l <= 1) return;
@@ -350,19 +350,19 @@ What is a randomized algorithm? An additional random input is fed into the algor
 + To measure a random algorithm's complexity, we look at the mathematical mean of complexity (=E(T(n))=) instead of worst case, since here the number of operations is randomized (non-deterministic).
 + Worst case is if each time we pick the smallest x, O(n^{2}).
 + Let's calculate the expected mean of complexity.
-	#+begin_export latex
-	\begin{center}
-	\begin{align*}
-	   E(T(n)) &= \sum_{x} xp(T(n) = x)\ \text{where}\ p(x) = \frac{1}{x}\ \forall x \\
-		 T(n) &= n + T(k) + T(n-k) \\
-		 \therefore\ E(T(n)) &= \sum_{k=0}^{n-1} (n + E(T(k)) + E(T(n-k)\frac{1}{n})) \\
-		 T(n) &\leq [\frac{1}{3}((T(\frac{n}{3}) + T(\frac{2n}{3})) + \frac{2}{3}(T(n)))] + n \\ 
-	\end{align*}
-	where the term with $\frac{1}{3}$ is the best case, 3-way split and the other is worst \\
-	$\implies T(n) \leq 3n + T(\frac{n}{3}) + T(\frac{2n}{3})$ \\
-	\end{center}
-	#+end_export
-	So assuming $T(n) \leq cn log n$ & substituting, we get $T(n) \leq cn lg n + c(k)$ where k < 0. Hence assumption holds.
+  #+begin_export latex
+  \begin{center}
+  \begin{align*}
+     E(T(n)) &= \sum_{x} xp(T(n) = x)\ \text{where}\ p(x) = \frac{1}{x}\ \forall x \\
+     T(n) &= n + T(k) + T(n-k) \\
+     \therefore\ E(T(n)) &= \sum_{k=0}^{n-1} (n + E(T(k)) + E(T(n-k)\frac{1}{n})) \\
+     T(n) &\leq [\frac{1}{3}((T(\frac{n}{3}) + T(\frac{2n}{3})) + \frac{2}{3}(T(n)))] + n \\ 
+  \end{align*}
+  where the term with $\frac{1}{3}$ is the best case, 3-way split and the other is worst \\
+  $\implies T(n) \leq 3n + T(\frac{n}{3}) + T(\frac{2n}{3})$ \\
+  \end{center}
+  #+end_export
+  So assuming $T(n) \leq cn log n$ & substituting, we get $T(n) \leq cn lg n + c(k)$ where k < 0. Hence assumption holds.
 + An intuitive way to think about this is that after three picks, (every third pick), one gets a good split which decreases the size of array by a constant factor ($\leq 2n/3$).
 + Depth of this recustion: $3 log_{\frac{3}{2}} n$. Hence total time complexity is n lg n.
 + To pick elements closer to center of array, take 3 random values and choose the middle one as /x/.
@@ -381,7 +381,7 @@ Given an array and an index, value at that index in the sorted array would be?
 + One way to go about this is to sort the array and then pick the value : O(n lg n).
 + Faster way is to pick a random element x = a[rand(0..n-1)] and split /a/ into two sub-arrays.
 + If $k \leq$ size(LSA) (left sub-array), then discard RSA and recurse.
-	#+begin_src c++
+  #+begin_src c++
   int find(int l, int r, int k) {
     if (r - l == 1) return a[k];
     int x = a[rand(l..r-1)], m = l;
@@ -393,7 +393,7 @@ Given an array and an index, value at that index in the sorted array would be?
     }
     (k < m)? return find(l, m, k) : return find(m, r, k);
   }
-	#+end_src
+  #+end_src
 + Difference with quicksort lies in the fact that in the latter two recursive calls are made whereas here only one is.
 + /Complexity/: $(n + \frac{2}{3}n + \frac{4}{9}n + ...) = 3n\ \implies$ O(n).
 *** Blum-Floyd-Pratt-Rivest-Tarjan 
@@ -414,9 +414,9 @@ Given an array and an index, value at that index in the sorted array would be?
 
 *** Tasks
 1. Give an example when quicksort works in \Omega(n^{2}) time, if the separator is: \\
-	 i. the leftmost element of the segment \\
-	 ii. the rightmost element of the segment \\
-	 iii. the central element of the segment a[(l+r)/2]
+   i. the leftmost element of the segment \\
+   ii. the rightmost element of the segment \\
+   iii. the central element of the segment a[(l+r)/2]
 2. Imagine that the attacker knows what algorithm is used to select the separator (i.e. has knowlege of the RNG). How can he write a test that makes quicksort work \Omega(n^{2}) time?
 3. How much extra memory does quicksort use on average and in the worst case?
 4. You have /n/ bolts and /n/ matching nuts, all bolts (and all nuts) have different diameters. Looking at two bolts (or nuts) it is difficult to understand which is larger and which is smaller, so the only operation that you have is to take some bolt and some nut, and compare their diameters. Find a matching nut for each bolt in O(n lg n) operations.
@@ -430,22 +430,22 @@ We have discussed Merge sort, Heap sort and Quicksort, all of which work in O(n 
 + First, one must define and fix the allowed set of operations. For sorting, the only needed operation is /comparion/ of elements.
 + The idea is to show that an algorithm that's faster than the lower bound can't solve the problem.
 + To illustrate the idea, let's consider the problem of sorting three elements /x, y and z/. To solve this:
-	1. First, =compare(x,y)=, say we get /x < y/.
-	2. Then =compare(x,z)=, we find /x/ to be the minimum.
-	3. Then =compare(y,z)= and the sorting finishes.
+  1. First, =compare(x,y)=, say we get /x < y/.
+  2. Then =compare(x,z)=, we find /x/ to be the minimum.
+  3. Then =compare(y,z)= and the sorting finishes.
 + All the outcomes for this game can be seen in the following tree.
-	#+begin_export latex
-	\begin{center}
-		\begin{forest}
-		 [sort(x y z), for tree={draw}
-				[x<y [x<z [y<z [xyz, top color=gray!10, bottom color=gray!10]]
-				          [y>z [xzy, top color=gray!10, bottom color=gray!10]]]
-				     [x>z [zxy, top color=gray!10, bottom color=gray!10]]]
-				[x>y [y<z [x<z [yxz, top color=gray!10, bottom color=gray!10]]
-				          [x>z [yzx, top color=gray!10, bottom color=gray!10]]]
-				     [y>z [zyx, top color=gray!10, bottom color=gray!10]]]]
-		\end{forest}
-	\end{center}
+  #+begin_export latex
+  \begin{center}
+    \begin{forest}
+     [sort(x y z), for tree={draw}
+        [x<y [x<z [y<z [xyz, top color=gray!10, bottom color=gray!10]]
+                  [y>z [xzy, top color=gray!10, bottom color=gray!10]]]
+             [x>z [zxy, top color=gray!10, bottom color=gray!10]]]
+        [x>y [y<z [x<z [yxz, top color=gray!10, bottom color=gray!10]]
+                  [x>z [yzx, top color=gray!10, bottom color=gray!10]]]
+             [y>z [zyx, top color=gray!10, bottom color=gray!10]]]]
+    \end{forest}
+  \end{center}
   #+end_export
 + The height of the tree gives the maximum number of comparisons needed to get the solution : T(n)
 + The leaves represent the 6 outcomes of the problem (/n!/)
@@ -454,13 +454,13 @@ We have discussed Merge sort, Heap sort and Quicksort, all of which work in O(n 
 *** Radix Sort
 + For an array with elements in a small range, say a[i] = [0..m-1] for a small m, one can track the count of each element and sort potentially faster than (n lg n), O(n: /iter/ + m: /cnt/ + (n+m): /sort/) which is O(n+m). This is called /counting sort/.
 + This fails if we need to store more information except just the count, consider the case when we also need to know the original indices where these values were, for that we can keep track of the count and mark those indices in the output array where the next value comes and then populate the indices by going through the input array (or keep a bucket of indices for each value instead of count).
-	#+begin_export latex
-	\begin{figure}[ht]
+  #+begin_export latex
+  \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{./figures/bucket.pdf}
     \caption{Bucket Sort}
     \label{fig:bucket}
-	\end{figure}
+  \end{figure}
   #+end_export
 + But this only works for small values of /m/, suppose we have integers in the range [0..m^{2}-1], i.e. /x/ \in [0..m^{2}-1]. Then we consider the number in terms of its individual digits, (i.e. by looking at each digit in the same tens' place and comparing them and so on). We can also denote x = ym + z (y, z \in [0..m-1]) so each element in array /a/ can be written as a[i] = b[i]m + c[i] and to compare two values a[i] and a[j], we check b[i], b[j] and subsequently c[i] and c[j]. This is /Radix sort/. The core idea being comparing small numbers instead of big ones.
 + To illustrate the point, let's consider the case when /m/ = 3 and we have the array /a/ = [6, 2, 4, 1, 7, 2, 3, 4, 6] then by decomposing it into numbers smaller than 3, we get /a/ = [2,0; 0,2; 1,1; 0,1; 2,1; 0,2; 1,0; 1,1; 2,0] then sorting those values using counting sort (first sort by [2,x; 0,x; 1,x] values corresponding to x then again by [x,0; x,1; x,2]) so the process would look like /a/ = [2,0; 1,0; 2,0; 1,1; 0,1; 2,1; 1,1; 0,2; 0,2] and in the second pass /a/ = [0,1; 0,2; 0,2; 1,0; 1,1; 1,1; 2,0; 2,0; 2,1] which gives the sorted array /a/ = [1, 2, 2, 3, 4, 4, 6, 6, 7].
@@ -501,8 +501,8 @@ Given an operation =comp(i,j): if(a[i] > a[j]) swap(a[i],a[j])=, using just this
 4. There is an array of 2n different elements on which a linear order is defined (i.e. any two elements can be compared). You need to split them into /n/ pairs, so that the segments whose boundaries are numbers from pairs do not intersect. For example, from array [4, 10, 1, 6, 7, 2], you can build pairs (1,2), (7,10), (4,6). Is it possible to solve this problem faster than O(n log n) time?
 5. Build the sorting network for the bubble sort algorithm. What is the number of comparators and the depth of the network?
 6. There are /n/ friends living on the line, the /i/-th friend lives at /x_{i}/, They want to meet at one point. \\
-	 i. Help them find a point so that the total distance they travel is minimum. \\
-	 ii. Help them find a point so that the sum of the squares of the distances they travel is minimum.
+   i. Help them find a point so that the total distance they travel is minimum. \\
+   ii. Help them find a point so that the sum of the squares of the distances they travel is minimum.
 7. There is an array of /n/ non-negative integers. You can decrease the numbers, but so that they remain non-negative. What is the maximum number of distinct numbers that an array can have after several such operations?
 ** Binary Search
 A basic technique to find something in a list of _sorted_ things.
@@ -514,7 +514,7 @@ A basic technique to find something in a list of _sorted_ things.
     \label{fig:binsearch}
 \end{figure}
 #+end_export
-	#+begin_src c++
+  #+begin_src c++
   int l = 0, r = n-1;
   while (r - l + 1 >= 1) {
     int m = (l + r)/2; // O(log n)
@@ -522,11 +522,11 @@ A basic technique to find something in a list of _sorted_ things.
     else if (a[m] > x): r = m - 1;
     else return m;
   }
-	#+end_src
+  #+end_src
 + Each iteration, the search space reduces by half, so the complexity is O(lg n).
 + This naive implementation doesn't work for multiple instances of /x/ and is very crude.
 + Onto the next problem, this one requires us to find minimum index /i/ given /x/ such that, a[i] \geq x. We put /l/ pointer such that a[l] < x and right pointer /r/ such that a[r] \geq x For that we add two dummy elements -\infty and +\infty to the array and initialize /l/ and /r/ pointers to these indices.
-	#+begin_src c++
+  #+begin_src c++
   int l = -1, r = n;
   while (l + 1 < r) {
     int m = (l + r)/2;
@@ -536,7 +536,7 @@ A basic technique to find something in a list of _sorted_ things.
   return r;
   #+end_src
 + If instead we have to find maximum /i/ such that a[i] \leq x i.e. a[l] \leq x and a[r] > x;
-	#+begin_src c++
+  #+begin_src c++
   int l = -1, r = n;
   while (l + 1 < r) {
     int m = (l + r)/2;
@@ -547,7 +547,7 @@ A basic technique to find something in a list of _sorted_ things.
   #+end_src
 *** Examples
 + /Example/: Find minimum such /x/ such that one can fit /n/ - /h/ \times /w/ rectangles in a /x/ \times /x/ square.
-	#+begin_src c++
+  #+begin_src c++
   bool good(int x) {
     // no. of rect in width = x/w
     // no. of rect in heigt = x/h
@@ -565,11 +565,11 @@ A basic technique to find something in a list of _sorted_ things.
   #+end_src
 + /Example 2/: Consider a line on which multiple people are running, each person has a co-ordinate x[i] and maximum speed v[i] associated with them. We have to find the minimum time /t/ such that all the people gather at the same point. (Define /t/ as =good= if they can gather in /t/ secs)
   - For each person, in /t/ secs, they can cover the segment (l[i], r[i]) =  (x[i]-tv[i]..x[i]+tv[i]).
-	- We simply need to find a common point for all the segments.
+  - We simply need to find a common point for all the segments.
   #+begin_src c++
   bool good(unsigned double t) {
     // x >= max(l[i]) and x <= min(r[i])
-		return max(x[i] - tv[i]) <= min(x[i] + tv[i])
+    return max(x[i] - tv[i]) <= min(x[i] + tv[i])
   }
 
   unsigned double l = 0, r = 1e10;
@@ -583,7 +583,7 @@ A basic technique to find something in a list of _sorted_ things.
   #+end_src
 *** Ternary Search
 Consider a function having a maxima in an interval, it is increasing initially, reaches the maximum and then decreases.
-	#+begin_src c++
+  #+begin_src c++
   int l = 0, r = n-1;
   while (l + 1 < r) {
     int m1 = (2*l + r)/3, m2 = (l + 2*r)/3;
@@ -603,18 +603,18 @@ Consider a function having a maxima in an interval, it is increasing initially, 
 8. There are /n/ candidates participating in the elections. According to the latest polls, a_{i} voters are ready to vote for the candidate /i/. You want your candidate to win (get more votes than any other candidate). For /s/ dollars, you can change the opinion of one voter. How many money should be spent on such an election campaign?
 ** Stacks, Queues, Amortized Cost
 1. Stack \\
-	 A data structure where new elements are /pushed/ and /popped/ from the top (LIFO). Considering an infinite-size array having /n/ elements, push and pop can be implemented as: \\
-	 =push(x): a[n++] = x= and =pop(): return a[--n]=
+   A data structure where new elements are /pushed/ and /popped/ from the top (LIFO). Considering an infinite-size array having /n/ elements, push and pop can be implemented as: \\
+   =push(x): a[n++] = x= and =pop(): return a[--n]=
 2. Queue \\
-	 Rather than pushing and removing from the same side, in a queue elements are added to the tail and removed from the head (FIFO). \\
-	 =add(x): a[tail++] = x= and =remove(): return a[head++]= \\
-	 For a circular queue, =add(x): a[tail++ % n] = x= and =remove(): return a[head++ % n]=.
+   Rather than pushing and removing from the same side, in a queue elements are added to the tail and removed from the head (FIFO). \\
+   =add(x): a[tail++] = x= and =remove(): return a[head++]= \\
+   For a circular queue, =add(x): a[tail++ % n] = x= and =remove(): return a[head++ % n]=.
 3. Deque \\
-	 Offers removal and addition from both head and tail. \\
-	 =pushfwd(x), pushbk(x), popfwd(), popbk()=.
+   Offers removal and addition from both head and tail. \\
+   =pushfwd(x), pushbk(x), popfwd(), popbk()=.
 4. Dynamic Array Stack \\
-	 Present in the form of a vector in C++, whenever the array is about to be filled, its capacity is doubled and the data is copied.
-	 #+begin_src c++
+   Present in the form of a vector in C++, whenever the array is about to be filled, its capacity is doubled and the data is copied.
+   #+begin_src c++
    push(x):
      if (n = a.size()) {
        a' = new array(2n);
@@ -625,22 +625,22 @@ Consider a function having a maxima in an interval, it is increasing initially, 
    #+end_src
    The insertion capacity looks to be O(n) but to check for average time complexity, one must use Amortized analysis. The actual push operation is quick only the copy operation is slow. \\
    Let's denote the real time by T(op) and amortized time by $\hat{T}(op)$. Considering multiple operations O_{1}, O_{2}, ... O_{m}, the amortized time must satisfy the property $\sum T(O_{i}) \leq \sum \hat{T}(O_{i})$ to be considered as /good/. \\
-	 For our =push= operation, $\hat{T}(push) = O(1) = c$ i.e. we need to show $\sum_{0}^{m-1}T(O_{i}) \leq cm$. The left side is equivalent to pushing /m/ elements in stack and the time taken for /m/ copy operations i.e. \sum T(O_{i}) = m + T(/m/ copy op). \\
-	 Now the time to copy those /m/ objects would be (1 + 2 + 4 + ... 2^{k}) where m \geq 2^{k}. (2^{k+1} \leq 2m) This gives \sum T(O_{i}) = m + 2^{k+1} - 1 \leq m + 2m \leq 3m. \\
-	 Hence, $\hat{T}(O_{i})$ is O(m).
+   For our =push= operation, $\hat{T}(push) = O(1) = c$ i.e. we need to show $\sum_{0}^{m-1}T(O_{i}) \leq cm$. The left side is equivalent to pushing /m/ elements in stack and the time taken for /m/ copy operations i.e. \sum T(O_{i}) = m + T(/m/ copy op). \\
+   Now the time to copy those /m/ objects would be (1 + 2 + 4 + ... 2^{k}) where m \geq 2^{k}. (2^{k+1} \leq 2m) This gives \sum T(O_{i}) = m + 2^{k+1} - 1 \leq m + 2m \leq 3m. \\
+   Hence, $\hat{T}(O_{i})$ is O(m).
 *** TODO Amortization
-	 Amortization is appropriate in situations where particular algorithms are repeatedly applied, as occurs with operations on data structures. By averaging the time per operation over a worst-case sequence of operations, we sometimes can obtain an overall time bound much smaller than the worst-case time per operation multiplied by the number of operations. [Ref. Tarjan]
+   Amortization is appropriate in situations where particular algorithms are repeatedly applied, as occurs with operations on data structures. By averaging the time per operation over a worst-case sequence of operations, we sometimes can obtain an overall time bound much smaller than the worst-case time per operation multiplied by the number of operations. [Ref. Tarjan]
 1. Potential Function (Q):
-	 - Potential is a value assigned to the current _state_ of the data structure.
-	 - After fixing a potential function, $\hat{T} = T + \Delta Q (= Q_{i+1} - Q_{i})$.
-	 - This gives $\sum \hat{T}(O_{i}) = \sum T(O_{i}) + \Delta Q (= Q_{m} - Q_{0} \geq 0)$, which gives $\sum T(O_{i}) \leq \sum \hat{T}(O_{i})$
-	 - A /good/ potential function compensates for the real time operation cost so that the amortized cost reduces.
-	 - Consider the task of resizing an array and copying its contents, our potential should compensate for /T = n/, so our \Delta Q should be f(-n), looking at the array, initially the array is full i.e. its right side is full, but upon expansion its right side is empty.
-	 - Thus by considering the number of elements in the right side of the array as the potential i.e. Q = 2(no. of elements in right side), one can get \Delta Q = 0 - 2(n/2) = -n. Which makes the amortized cost constant.
+   - Potential is a value assigned to the current _state_ of the data structure.
+   - After fixing a potential function, $\hat{T} = T + \Delta Q (= Q_{i+1} - Q_{i})$.
+   - This gives $\sum \hat{T}(O_{i}) = \sum T(O_{i}) + \Delta Q (= Q_{m} - Q_{0} \geq 0)$, which gives $\sum T(O_{i}) \leq \sum \hat{T}(O_{i})$
+   - A /good/ potential function compensates for the real time operation cost so that the amortized cost reduces.
+   - Consider the task of resizing an array and copying its contents, our potential should compensate for /T = n/, so our \Delta Q should be f(-n), looking at the array, initially the array is full i.e. its right side is full, but upon expansion its right side is empty.
+   - Thus by considering the number of elements in the right side of the array as the potential i.e. Q = 2(no. of elements in right side), one can get \Delta Q = 0 - 2(n/2) = -n. Which makes the amortized cost constant.
 2. Accounting Method:
-	 - This allows for us to deposit and withdraw time units by using two methods =put_coin(t)= and =get_coin(t)=.
-	 - =put_coin= adds (credits) amortized cost of T units and =get_coin= reduces (debits) it by T units.
-	 - Considering the example of dynamic array expansion. 
+   - This allows for us to deposit and withdraw time units by using two methods =put_coin(t)= and =get_coin(t)=.
+   - =put_coin= adds (credits) amortized cost of T units and =get_coin= reduces (debits) it by T units.
+   - Considering the example of dynamic array expansion. 
 *** Tasks
 1. Add to the stack and queue the operation =getSum()= that returns the sum of the items in the stack/queue. Time complexity O(1). Additional memory O(1).
 2. Add to the stack the operation =getMin()= that returns the smallest item on the stack. Time complexity O(1). Additional memory O(size) (size is number of elements in the stack).
