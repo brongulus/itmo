@@ -655,8 +655,17 @@ Pointer machine is a computational model where all the data is stored in nodes h
 
 In a pointer machine model, unlike the RAM model there are no arrays. So how would a list of elements be created? By linking the nodes.
 
-+ TODO: Linked list figure
-  
++ TODO: Linked list figure, Check physical notes
+*** Tasks
+1. How to reverse a singly linked list in O(n) time with O(1) additional memory?
+2. To save memory in doubly linked lists, instead of two pointers (next and prev), you can store only their bitwise XOR. (if prev[i] = 5, next[i] = 3, then prevnext[i] = 6). How to iterate over such a list?
+3. Given a set of /n/ nodes, each has a pointer to some another node from the set. Check if these nodes form a circular list. (Time O(n), memory O(1)).
+4. Merge two sorted singly linked lists into one in O(n) time with O(1) additional memory.
+5. Sort the singly linked list in O(n log n) time with O(1) additional memory.
+6. There is a table /n/ \times /n/, M operations of the following type are carried out with it: cut a rectangular price, rotate 180\deg and paste in the same place. Print the state of the table after all operations. Time O(mn).
+7. Figure out how to store the linked list so that it can be reversed in O(1) time (with all other operations preserved).
+8. Given a set of n nodes, each with a link to the next and previous one, check if these elements really form several linked lists and, if so, concatenate these lists into one (in any order). (Time O(n), memory O(1)).
+   
 * Trees and Friends
 * Graphs and Strings
 * Cuts, Flows and Miscellaneous Algorithms
