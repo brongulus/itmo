@@ -19,7 +19,7 @@
 #+latex_header: \renewcommand{\chaptername}{Lecture}
 #+latex_header: \renewcommand{\partname}{Semester}
 #+LATEX_HEADER: \usepackage[margin=1.0in]{geometry}
-#+LATEX_HEADER: \renewcommand{\baselinestretch}{1.25}
+# #+LATEX_HEADER: \renewcommand{\baselinestretch}{1.25}
 #+LATEX_HEADER: \setlength{\abovedisplayskip}{7pt}
 #+LATEX_HEADER: \setlength{\belowdisplayskip}{7pt}
 #+LATEX_HEADER: \setlength{\abovedisplayshortskip}{7pt}
@@ -36,7 +36,7 @@
 * Sorting, Hashing and Data Structures
 ** Algorithms, Time Complexity, Merge Sort
 *** What is an algorithm and how to measure its efficiency?
-+ Formalized way to solve a problem (sequence of simple operations).
+- Formalized way to solve a problem (sequence of simple operations).
 #+BEGIN_EXPORT latex
 \usetikzlibrary{shapes.geometric, arrows}
 \tikzstyle{startstop} = [rectangle, rounded corners,
@@ -70,13 +70,13 @@ fill=green!30]
 
 \end{tikzpicture}
 #+END_EXPORT
-+ Time spent by an algorithm : Time complexity, is a good measure of its efficiency.
-+ Time complexity is not measured in seconds because different devices have different processing powers.
-+ Hence it is more useful to measure in terms of /number of operations/.
-+ Computational Model - mathematical abstraction used to calculate time complexity.
-+ RAM Model - Any cell of memory can be accessed in constant time.
-+ Time complexity depends on the number of inputs.
-+ For the illustrated sum of array elements algorithm, the number of operations are:
+- Time spent by an algorithm : Time complexity, is a good measure of its efficiency.
+- Time complexity is not measured in seconds because different devices have different processing powers.
+- Hence it is more useful to measure in terms of /number of operations/.
+- Computational Model - mathematical abstraction used to calculate time complexity.
+- RAM Model - Any cell of memory can be accessed in constant time.
+- Time complexity depends on the number of inputs.
+- For the illustrated sum of array elements algorithm, the number of operations are:
   #+begin_src c++
   int s = 0; // 1
   for(int i = 0; i < n; i++) { // 2n : n i-value increments, n comp. i < n
@@ -84,12 +84,12 @@ fill=green!30]
   }
   print(s); // 1
   #+end_src
-+ Hence the total operations are 1 + 2n + 3n + 1 = 5n + 2 = O(n) operations.
-+ $f(n) = O(g(n)) \implies \exists n_{0}, c$ such that $\forall n \geq n_{0}: f(n) \leq c*g(n)$
-+ Here f(n) = 5n + 2 & g(n) = n which gives n_{0} = 2 and c = 6.
-+ When an algorithm is O(n), it is not slower than O(n).
-+ $f(n) = \Omega g(n) \implies \exists n_{0}, c$ such that $\forall n \geq n_{0}: f(n) \geq c*g(n)$
-+ When T(n) = O(n) and T(n) = \Omega(n) is known,  we can denote it by T(n) = \Theta(n) i.e. lower and upper bounds are same.
+- Hence the total operations are 1 + 2n + 3n + 1 = 5n + 2 = O(n) operations.
+- $f(n) = O(g(n)) \implies \exists n_{0}, c$ such that $\forall n \geq n_{0}: f(n) \leq c*g(n)$
+- Here f(n) = 5n + 2 & g(n) = n which gives n_{0} = 2 and c = 6.
+- When an algorithm is O(n), it is not slower than O(n).
+- $f(n) = \Omega g(n) \implies \exists n_{0}, c$ such that $\forall n \geq n_{0}: f(n) \geq c*g(n)$
+- When T(n) = O(n) and T(n) = \Omega(n) is known,  we can denote it by T(n) = \Theta(n) i.e. lower and upper bounds are same.
 *** Time complexity (Examples)
 1.
   #+BEGIN_SRC c++
@@ -97,13 +97,13 @@ fill=green!30]
     for(int j = 0; i < n; j++) // (n)
   #+END_SRC
   /n/ iterations of inner loop and /n/ iterations of outer, hence this is O(n^{2}).
-2. 
+2.
  #+BEGIN_SRC c++
    for(int i = 0; i < n; i++) // (n)
      for(int j = 0; i < i; j++) // (0+1+...n-1)
  #+END_SRC
   Hence this is $\frac{(n-1)(n)}{2} + n$ or $\frac{n^{2}+n}{2}$ which is O(n^{2}).
-3. 
+3.
  #+BEGIN_SRC c++
   int i = 0;
   while(i * i < n) i++;
@@ -227,15 +227,15 @@ fill=green!30]
 7. Show how to implement merge sort without recursion.
 ** Data Structures, Binary Heap, Heap Sort
 *** What is a data structure?
-+ A structure containing some data.
-+ Why not store everyting in an array? (Ease of) Accessibility, Organization
-+ First the operation to be performed on the data is decided, then accordingly the structure is chosen.
-+ They can be classified according to the operations that are possible in the respective classes.
+- A structure containing some data.
+- Why not store everyting in an array? (Ease of) Accessibility, Organization
+- First the operation to be performed on the data is decided, then accordingly the structure is chosen.
+- They can be classified according to the operations that are possible in the respective classes.
 *** Binary Heap
-+ Heaps/ Priority Queues are the class of data structure that can perform the following operations:
+- Heaps/ Priority Queues are the class of data structure that can perform the following operations:
   1. Insert an element: =insert(x)=
   2. Remove minimum element: =rem_min(x)=
-+ Array based construction:
+- Array based construction:
   Let first /n/ elements of arrray /a/ form the heap, then =insert(x)= would add /x/ at index /n/ and increment heap size.
   #+BEGIN_SRC c++
     def insert(x): // O(1)
@@ -251,11 +251,11 @@ fill=green!30]
     swap(a[j], a[n-1]);
     return a[--n];
   #+end_src
-+ If the array is sorted in decreasing order, then complexity of =rem_min= becomes O(1) /but/ the time complexity of =insert(x)= becomes O(n)!
-+ So an array, sorted or otherwise is not suitable for forming a heap.
-+ Enter _Binary Heap_ and it brings alongwith it O(log n) complexity for both insertion and removal.
-+ Each node has atmost 2 elements.
-+ The structure of a binary tree is fixed by the number of elements. (will be explained later)
+- If the array is sorted in decreasing order, then complexity of =rem_min= becomes O(1) /but/ the time complexity of =insert(x)= becomes O(n)!
+- So an array, sorted or otherwise is not suitable for forming a heap.
+- Enter _Binary Heap_ and it brings alongwith it O(log n) complexity for both insertion and removal.
+- Each node has atmost 2 elements.
+- The structure of a binary tree is fixed by the number of elements. (will be explained later)
 #+BEGIN_EXPORT latex
 \begin{center}
 \begin{forest}
@@ -266,9 +266,9 @@ fill=green!30]
 \end{forest}
 \end{center}
 #+END_EXPORT
-+ _Heap Property_: Each element is less than or equal to its children.
-+ Generally a binary tree is stored in the form of a /class/ node and pointers to its left and right child.
-+ Indices of a heap are used to identify parent-child positions in an array.
+- _Heap Property_: Each element is less than or equal to its children.
+- Generally a binary tree is stored in the form of a /class/ node and pointers to its left and right child.
+- Indices of a heap are used to identify parent-child positions in an array.
 #+begin_export latex
 \begin{center}
 \begin{forest}
@@ -281,8 +281,8 @@ fill=green!30]
 \end{forest}
 \end{center}
 #+end_export
-+ =insert(x): h[n++] = x;=
-+ But /x/ doesn't satisfy the heap property so parent and child are swapped and heap property is checked and the swap continues till its satisfied.
+- =insert(x): h[n++] = x;=
+- But /x/ doesn't satisfy the heap property so parent and child are swapped and heap property is checked and the swap continues till its satisfied.
   #+begin_src c++
     // Sift-up Operation
     int pos = n-1;
@@ -291,7 +291,7 @@ fill=green!30]
       pos = (pos - 1)/2; // O(log n) -> #layers of tree
     }
   #+end_src
-+ =rem_min()=: Minimum element is the root. On removal of root, the new root is the last element of the tree but that destroys the heap property hence it must be reconstructed; =min(LC, RC)= is swapped with the parent root till its satisfied.
+- =rem_min()=: Minimum element is the root. On removal of root, the new root is the last element of the tree but that destroys the heap property hence it must be reconstructed; =min(LC, RC)= is swapped with the parent root till its satisfied.
   #+begin_src c++
     // Sift-down Operation
     int pos = 0;
@@ -307,7 +307,7 @@ fill=green!30]
     }
     return h[n];
   #+end_src
-+ Using binary heap, we can create a fast sorting algorithm called /heapsort/.
+- Using binary heap, we can create a fast sorting algorithm called /heapsort/.
   #+begin_src c++
     // O(n log n)
     for(int i = 0; i < n; i++) insert(a[i]); // create heap
@@ -330,8 +330,8 @@ fill=green!30]
 ** Quicksort, Order Statistics
 What is a randomized algorithm? An additional random input is fed into the algorithm.
 *** How do randomized algorithms work?
-+ Pick a random element /x/, divide the array into two parts having /elements less than x/ and /otherwise/.
-+ Repeat for each subpart with random seed till we have array of size 1.
+- Pick a random element /x/, divide the array into two parts having /elements less than x/ and /otherwise/.
+- Repeat for each subpart with random seed till we have array of size 1.
   TODO: insert figure
   #+begin_src c++
     // sort(l, r):
@@ -346,10 +346,10 @@ What is a randomized algorithm? An additional random input is fed into the algor
     sort(l, m);
     sort(m, r);
   #+end_src
-+ This does not work for array having equal elements, one potential solution for that is to split the array into 3 parts, (< x, = x, > x).
-+ To measure a random algorithm's complexity, we look at the mathematical mean of complexity (=E(T(n))=) instead of worst case, since here the number of operations is randomized (non-deterministic).
-+ Worst case is if each time we pick the smallest x, O(n^{2}).
-+ Let's calculate the expected mean of complexity.
+- This does not work for array having equal elements, one potential solution for that is to split the array into 3 parts, (< x, = x, > x).
+- To measure a random algorithm's complexity, we look at the mathematical mean of complexity (=E(T(n))=) instead of worst case, since here the number of operations is randomized (non-deterministic).
+- Worst case is if each time we pick the smallest x, O(n^{2}).
+- Let's calculate the expected mean of complexity.
   #+begin_export latex
   \begin{center}
   \begin{align*}
@@ -363,10 +363,10 @@ What is a randomized algorithm? An additional random input is fed into the algor
   \end{center}
   #+end_export
   So assuming $T(n) \leq cn log n$ & substituting, we get $T(n) \leq cn lg n + c(k)$ where k < 0. Hence assumption holds.
-+ An intuitive way to think about this is that after three picks, (every third pick), one gets a good split which decreases the size of array by a constant factor ($\leq 2n/3$).
-+ Depth of this recustion: $3 log_{\frac{3}{2}} n$. Hence total time complexity is n lg n.
-+ To pick elements closer to center of array, take 3 random values and choose the middle one as /x/.
-+ _Note_ that the time complexity is calculated for /input's worst case/ not /split's/ i.e. random input is still random.
+- An intuitive way to think about this is that after three picks, (every third pick), one gets a good split which decreases the size of array by a constant factor ($\leq 2n/3$).
+- Depth of this recustion: $3 log_{\frac{3}{2}} n$. Hence total time complexity is n lg n.
+- To pick elements closer to center of array, take 3 random values and choose the middle one as /x/.
+- _Note_ that the time complexity is calculated for /input's worst case/ not /split's/ i.e. random input is still random.
 
 *** Order Statistics
 Given an array and an index, value at that index in the sorted array would be?
@@ -378,9 +378,9 @@ Given an array and an index, value at that index in the sorted array would be?
     \label{fig:ordstat}
 \end{figure}
 #+end_export
-+ One way to go about this is to sort the array and then pick the value : O(n lg n).
-+ Faster way is to pick a random element x = a[rand(0..n-1)] and split /a/ into two sub-arrays.
-+ If $k \leq$ size(LSA) (left sub-array), then discard RSA and recurse.
+- One way to go about this is to sort the array and then pick the value : O(n lg n).
+- Faster way is to pick a random element x = a[rand(0..n-1)] and split /a/ into two sub-arrays.
+- If $k \leq$ size(LSA) (left sub-array), then discard RSA and recurse.
   #+begin_src c++
   int find(int l, int r, int k) {
     if (r - l == 1) return a[k];
@@ -394,11 +394,11 @@ Given an array and an index, value at that index in the sorted array would be?
     (k < m)? return find(l, m, k) : return find(m, r, k);
   }
   #+end_src
-+ Difference with quicksort lies in the fact that in the latter two recursive calls are made whereas here only one is.
-+ /Complexity/: $(n + \frac{2}{3}n + \frac{4}{9}n + ...) = 3n\ \implies$ O(n).
+- Difference with quicksort lies in the fact that in the latter two recursive calls are made whereas here only one is.
+- /Complexity/: $(n + \frac{2}{3}n + \frac{4}{9}n + ...) = 3n\ \implies$ O(n).
 *** Blum-Floyd-Pratt-Rivest-Tarjan 
-+ /x/ is chosen deterministically instead of randomly.
-+ Taken median element of each block after sorting the block. [T(n) = n + T($\frac{n}{5}$)]
+- /x/ is chosen deterministically instead of randomly.
+- Taken median element of each block after sorting the block. [T(n) = n + T($\frac{n}{5}$)]
 #+begin_export latex
 \begin{figure}[ht]
     \centering
@@ -407,10 +407,10 @@ Given an array and an index, value at that index in the sorted array would be?
     \label{fig:bfprt}
 \end{figure}
 #+end_export
-+ Find overall median of all blocks /x/.
-+ Potential elements that are less than /x/: $\frac{n}{2}$ + ($\frac{2}{5} \frac{n}{2}$) = $\frac{7n}{10}$
-+ Therefore T(n) = n + T($\frac{n}{5}$) + T($\frac{7n}{10}$) is O(n).
-+ This can be verified by taking T(n) $\leq$ cn and the equation would be true for c $\geq$ 10.
+- Find overall median of all blocks /x/.
+- Potential elements that are less than /x/: $\frac{n}{2}$ + ($\frac{2}{5} \frac{n}{2}$) = $\frac{7n}{10}$
+- Therefore T(n) = n + T($\frac{n}{5}$) + T($\frac{7n}{10}$) is O(n).
+- This can be verified by taking T(n) $\leq$ cn and the equation would be true for c $\geq$ 10.
 
 *** Tasks
 1. Give an example when quicksort works in \Omega(n^{2}) time, if the separator is: \\
@@ -427,13 +427,13 @@ Given an array and an index, value at that index in the sorted array would be?
 ** More on Sorting
 We have discussed Merge sort, Heap sort and Quicksort, all of which work in O(n lg n). Is it possible to have a sorting algorithm that's faster than that?
 *** Lower bounds for Sorting
-+ First, one must define and fix the allowed set of operations. For sorting, the only needed operation is /comparion/ of elements.
-+ The idea is to show that an algorithm that's faster than the lower bound can't solve the problem.
-+ To illustrate the idea, let's consider the problem of sorting three elements /x, y and z/. To solve this:
+- First, one must define and fix the allowed set of operations. For sorting, the only needed operation is /comparion/ of elements.
+- The idea is to show that an algorithm that's faster than the lower bound can't solve the problem.
+- To illustrate the idea, let's consider the problem of sorting three elements /x, y and z/. To solve this:
   1. First, =compare(x,y)=, say we get /x < y/.
   2. Then =compare(x,z)=, we find /x/ to be the minimum.
   3. Then =compare(y,z)= and the sorting finishes.
-+ All the outcomes for this game can be seen in the following tree.
+- All the outcomes for this game can be seen in the following tree.
   #+begin_export latex
   \begin{center}
     \begin{forest}
@@ -447,13 +447,13 @@ We have discussed Merge sort, Heap sort and Quicksort, all of which work in O(n 
     \end{forest}
   \end{center}
   #+end_export
-+ The height of the tree gives the maximum number of comparisons needed to get the solution : T(n)
-+ The leaves represent the 6 outcomes of the problem (/n!/)
-+ Thus T(n) \geq lg(n!) = $\sum_{i=1}^{n} lg(i)$ = \Omega (n lg n).
-+ Thinking in terms of information theory, to guess one outcome/permutation, one needs to guess one out of n! possibilities which needs atleast lg(n!) bits and every comparison gives one bit of information.
+- The height of the tree gives the maximum number of comparisons needed to get the solution : T(n)
+- The leaves represent the 6 outcomes of the problem (/n!/)
+- Thus T(n) \geq lg(n!) = $\sum_{i=1}^{n} lg(i)$ = \Omega (n lg n).
+- Thinking in terms of information theory, to guess one outcome/permutation, one needs to guess one out of n! possibilities which needs atleast lg(n!) bits and every comparison gives one bit of information.
 *** Radix Sort
-+ For an array with elements in a small range, say a[i] = [0..m-1] for a small m, one can track the count of each element and sort potentially faster than (n lg n), O(n: /iter/ + m: /cnt/ + (n+m): /sort/) which is O(n+m). This is called /counting sort/.
-+ This fails if we need to store more information except just the count, consider the case when we also need to know the original indices where these values were, for that we can keep track of the count and mark those indices in the output array where the next value comes and then populate the indices by going through the input array (or keep a bucket of indices for each value instead of count).
+- For an array with elements in a small range, say a[i] = [0..m-1] for a small m, one can track the count of each element and sort potentially faster than (n lg n), O(n: /iter/ + m: /cnt/ + (n+m): /sort/) which is O(n+m). This is called /counting sort/.
+- This fails if we need to store more information except just the count, consider the case when we also need to know the original indices where these values were, for that we can keep track of the count and mark those indices in the output array where the next value comes and then populate the indices by going through the input array (or keep a bucket of indices for each value instead of count).
   #+begin_export latex
   \begin{figure}[ht]
     \centering
@@ -462,12 +462,12 @@ We have discussed Merge sort, Heap sort and Quicksort, all of which work in O(n 
     \label{fig:bucket}
   \end{figure}
   #+end_export
-+ But this only works for small values of /m/, suppose we have integers in the range [0..m^{2}-1], i.e. /x/ \in [0..m^{2}-1]. Then we consider the number in terms of its individual digits, (i.e. by looking at each digit in the same tens' place and comparing them and so on). We can also denote x = ym + z (y, z \in [0..m-1]) so each element in array /a/ can be written as a[i] = b[i]m + c[i] and to compare two values a[i] and a[j], we check b[i], b[j] and subsequently c[i] and c[j]. This is /Radix sort/. The core idea being comparing small numbers instead of big ones.
-+ To illustrate the point, let's consider the case when /m/ = 3 and we have the array /a/ = [6, 2, 4, 1, 7, 2, 3, 4, 6] then by decomposing it into numbers smaller than 3, we get /a/ = [2,0; 0,2; 1,1; 0,1; 2,1; 0,2; 1,0; 1,1; 2,0] then sorting those values using counting sort (first sort by [2,x; 0,x; 1,x] values corresponding to x then again by [x,0; x,1; x,2]) so the process would look like /a/ = [2,0; 1,0; 2,0; 1,1; 0,1; 2,1; 1,1; 0,2; 0,2] and in the second pass /a/ = [0,1; 0,2; 0,2; 1,0; 1,1; 1,1; 2,0; 2,0; 2,1] which gives the sorted array /a/ = [1, 2, 2, 3, 4, 4, 6, 6, 7].
-+ This is stable sort since the relative ordering of elements with same values is preserved. The complexity is O(m+n). If the values are of the order /k/, i.e. [0..m^{k}-1], then the time-complexity is considered as O(k(m+n)).
+- But this only works for small values of /m/, suppose we have integers in the range [0..m^{2}-1], i.e. /x/ \in [0..m^{2}-1]. Then we consider the number in terms of its individual digits, (i.e. by looking at each digit in the same tens' place and comparing them and so on). We can also denote x = ym + z (y, z \in [0..m-1]) so each element in array /a/ can be written as a[i] = b[i]m + c[i] and to compare two values a[i] and a[j], we check b[i], b[j] and subsequently c[i] and c[j]. This is /Radix sort/. The core idea being comparing small numbers instead of big ones.
+- To illustrate the point, let's consider the case when /m/ = 3 and we have the array /a/ = [6, 2, 4, 1, 7, 2, 3, 4, 6] then by decomposing it into numbers smaller than 3, we get /a/ = [2,0; 0,2; 1,1; 0,1; 2,1; 0,2; 1,0; 1,1; 2,0] then sorting those values using counting sort (first sort by [2,x; 0,x; 1,x] values corresponding to x then again by [x,0; x,1; x,2]) so the process would look like /a/ = [2,0; 1,0; 2,0; 1,1; 0,1; 2,1; 1,1; 0,2; 0,2] and in the second pass /a/ = [0,1; 0,2; 0,2; 1,0; 1,1; 1,1; 2,0; 2,0; 2,1] which gives the sorted array /a/ = [1, 2, 2, 3, 4, 4, 6, 6, 7].
+- This is stable sort since the relative ordering of elements with same values is preserved. The complexity is O(m+n). If the values are of the order /k/, i.e. [0..m^{k}-1], then the time-complexity is considered as O(k(m+n)).
 *** Sorting Networks
 Given an operation =comp(i,j): if(a[i] > a[j]) swap(a[i],a[j])=, using just this how can one implement a sorting algorithm?
-+ The diagram below looks at the comparisons performed between various elements as time passes. Here the number of arrows are given by (n lg n). An arrow between 0 and 1 denotes =comp(a[0],a[1])=.
+- The diagram below looks at the comparisons performed between various elements as time passes. Here the number of arrows are given by (n lg n). An arrow between 0 and 1 denotes =comp(a[0],a[1])=.
 #+begin_export latex
 \begin{figure}[ht]
     \centering
@@ -476,13 +476,13 @@ Given an operation =comp(i,j): if(a[i] > a[j]) swap(a[i],a[j])=, using just this
     \label{fig:sortnet}
 \end{figure}
 #+end_export
-+ To reduce the time taken, concurrent calls of non-interacting arrows i.e. call =comp(0,1)= and =comp(2,3)= at the same time. This reduces the width, decreases time to \approx O(n).
-+ _Theorem_: If a network sorts any array of 0s and 1s then it sorts any given possible array.
+- To reduce the time taken, concurrent calls of non-interacting arrows i.e. call =comp(0,1)= and =comp(2,3)= at the same time. This reduces the width, decreases time to \approx O(n).
+- _Theorem_: If a network sorts any array of 0s and 1s then it sorts any given possible array.
 *** Bitonic Sort
-+ /Bitonic Sequence/: An array with intervals of both increasing and decreasing elements. After cyclic shidt, its spilt into two parts, one increasing and another decreasing.
-+ eg: [3 2 4 6 10 25 17 11 86] \rightarrow [4 6 10 25 17 11 8 6 3 2].
-+ Sorting bitonic sequences using only the =comp= (and swap) operator. Consider a bitonic sequence represented by 0s and 1s. It can be sorted by splitting the array into half then comparing elements from each part and swapping them if element in left part is greater than element in the right part.
-+ This results in the two sub-arrays also being bitonic and the process is recursed till we get 1 element arrays when the entire array gets sorted.
+- /Bitonic Sequence/: An array with intervals of both increasing and decreasing elements. After cyclic shidt, its spilt into two parts, one increasing and another decreasing.
+- eg: [3 2 4 6 10 25 17 11 86] \rightarrow [4 6 10 25 17 11 8 6 3 2].
+- Sorting bitonic sequences using only the =comp= (and swap) operator. Consider a bitonic sequence represented by 0s and 1s. It can be sorted by splitting the array into half then comparing elements from each part and swapping them if element in left part is greater than element in the right part.
+- This results in the two sub-arrays also being bitonic and the process is recursed till we get 1 element arrays when the entire array gets sorted.
 #+begin_export latex
 \begin{figure}[ht]
     \centering
@@ -491,9 +491,9 @@ Given an operation =comp(i,j): if(a[i] > a[j]) swap(a[i],a[j])=, using just this
     \label{fig:bitonic}
 \end{figure}
 #+end_export
-+ At each iteration, we'll perform /n/ comparisons and we'll have /log n/ iterations, so the total complexity is O(/n lg n/).
-+ If concurrent comparisons are allowed, it would reduce to O(lg n).
-+ By performing this operation in reverse we can sort /any/ (non-bitonic) array, i.e. start by comparing two elements (any array of size 2 is bitonic) then go upto (lg n - 1) levels, we can create a bitonic sequence and then sort it using bitonic sort. This would be completed in O(n logn^{2} n) comparisons.
+- At each iteration, we'll perform /n/ comparisons and we'll have /log n/ iterations, so the total complexity is O(/n lg n/).
+- If concurrent comparisons are allowed, it would reduce to O(lg n).
+- By performing this operation in reverse we can sort /any/ (non-bitonic) array, i.e. start by comparing two elements (any array of size 2 is bitonic) then go upto (lg n - 1) levels, we can create a bitonic sequence and then sort it using bitonic sort. This would be completed in O(n logn^{2} n) comparisons.
 *** Tasks
 1. Given an array of /n/ elements from 1 to /k/, develop a data structure that can answer queries like "How many elements in the array are in the range from /a/ to /b/?" in O(1) time. Time for pre-calculation O(n+k).
 2. How to sort strings (of only latin letters) in lexicographic order using radix sort in O($\sum len(s_{i})$)?
@@ -655,7 +655,7 @@ Pointer machine is a computational model where all the data is stored in nodes h
 
 In a pointer machine model, unlike the RAM model there are no arrays. So how would a list of elements be created? By linking the nodes.
 
-+ TODO: Linked list figure, Check physical notes
+- TODO: Linked list figure, Check physical notes
 *** Tasks
 1. How to reverse a singly linked list in O(n) time with O(1) additional memory?
 2. To save memory in doubly linked lists, instead of two pointers (next and prev), you can store only their bitwise XOR. (if prev[i] = 5, next[i] = 3, then prevnext[i] = 6). How to iterate over such a list?
@@ -665,8 +665,7 @@ In a pointer machine model, unlike the RAM model there are no arrays. So how wou
 6. There is a table /n/ \times /n/, M operations of the following type are carried out with it: cut a rectangular price, rotate 180\deg and paste in the same place. Print the state of the table after all operations. Time O(mn).
 7. Figure out how to store the linked list so that it can be reversed in O(1) time (with all other operations preserved).
 8. Given a set of n nodes, each with a link to the next and previous one, check if these elements really form several linked lists and, if so, concatenate these lists into one (in any order). (Time O(n), memory O(1)).
-   
+** Disjoint Sets, Union-Find
 * Trees and Friends
 * Graphs and Strings
-* Cuts, Flows and Miscellaneous Algorithms
-     
+* Cuts, Flows and Miscellaneous Algorithms     
