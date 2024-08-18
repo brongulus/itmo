@@ -2,7 +2,7 @@
 #+SUBTITLE: Based on the course by Pavel Mavrin
 #+AUTHOR: Prashant Tak
 :CONFIG:
-#+STARTUP: over
+#+STARTUP: overview
 #+LATEX_CLASS: book
 #+LATEX_CLASS_OPTIONS: [openany,a4paper,12pt]
 #+LATEX_HEADER: \usepackage{tikz}
@@ -37,7 +37,7 @@
 ** Algorithms, Time Complexity, Merge Sort
 *** What is an algorithm and how to measure its efficiency?
 - Formalized way to solve a problem (sequence of simple operations).
-#+BEGIN_EXPORT latex
+#+begin_export latex
 \usetikzlibrary{shapes.geometric, arrows}
 \tikzstyle{startstop} = [rectangle, rounded corners,
 minimum width=3cm,
@@ -69,7 +69,7 @@ fill=green!30]
 \draw [arrow] (algoex) -- (opex);
 
 \end{tikzpicture}
-#+END_EXPORT
+#+end_export
 - Time spent by an algorithm : Time complexity, is a good measure of its efficiency.
 - Time complexity is not measured in seconds because different devices have different processing powers.
 - Hence it is more useful to measure in terms of /number of operations/.
@@ -92,55 +92,55 @@ fill=green!30]
 - When T(n) = O(n) and T(n) = \Omega(n) is known,  we can denote it by T(n) = \Theta(n) i.e. lower and upper bounds are same.
 *** Time complexity (Examples)
 1.
-  #+BEGIN_SRC c++
+  #+begin_src c++
   for(int i = 0; i < n; i++) // (n)
     for(int j = 0; i < n; j++) // (n)
-  #+END_SRC
+  #+end_src
   /n/ iterations of inner loop and /n/ iterations of outer, hence this is O(n^{2}).
 2.
- #+BEGIN_SRC c++
+ #+begin_src c++
    for(int i = 0; i < n; i++) // (n)
      for(int j = 0; i < i; j++) // (0+1+...n-1)
- #+END_SRC
+ #+end_src
   Hence this is $\frac{(n-1)(n)}{2} + n$ or $\frac{n^{2}+n}{2}$ which is O(n^{2}).
 3.
- #+BEGIN_SRC c++
+ #+begin_src c++
   int i = 0;
   while(i * i < n) i++;
- #+END_SRC
+ #+end_src
   For termination, $i^{2} \geq n$, hence $i \geq \sqrt{n}$ so /i/ is incremented till $\sqrt{n}$ i.e. O($\sqrt{n}$).
 4.
- #+BEGIN_SRC c++
+ #+begin_src c++
   int i = 1;
   while(i < n) i *= 2;
- #+END_SRC
+ #+end_src
   For /k/ iterations, i = 2^{k}, hence for termination $2^{k} \geq n, k \geq log_{2}n$ i.e. O(log_{2}n).
 5.
- #+BEGIN_SRC c++
+ #+begin_src c++
   def: f(n)
        if(n == 0) return
        f(n-1)
- #+END_SRC
+ #+end_src
   Here f(n) calls f(n-1) which in turn calls f(n-2) & so on till n is 0. Hence this is O(n).
 6.
- #+BEGIN_SRC c++
+ #+begin_src c++
   def: f(n)
        if(n == 0) return
        f(n/2)
- #+END_SRC 
+ #+end_src 
   Here f(n) calls f(n/2) and so on. Each iteration the value is halved hence O(log_{2}n).
 7.
- #+BEGIN_SRC c++
+ #+begin_src c++
   def: f(n)
        if(n == 0) return
        f(n/2)
        f(n/2)
- #+END_SRC
+ #+end_src
  Here f(n) calls f(n/2) twice and at each stage it would be called 2^{i} times, hence this is 2^{log_{2}n} or O(n).
 8. If f(n) called f(n/2) thrice then it would be 3^{log_{2}n} or n^{log_{2}3} or O(n^{1.6}) (approx.).
 *** Sorting Algorithms
 1. Insertion
- #+BEGIN_SRC c++
+ #+begin_src c++
   for(int i = 0; i < n; i++) {
     int j = 1;
     while(j > 0 && a[j] < a[j-1]) {
@@ -148,12 +148,12 @@ fill=green!30]
       j--;
     }
   } 
- #+END_SRC
+ #+end_src
  Best case: O(n) (sorted)
  Worst case: O(n^{2}) (descending)
 2. Merge Sort : Assume we have two sorted arrays /a/ and /b/ of sizes /n/ and /m/, we wish to store their sorted merged array in /c/.
- #+BEGIN_SRC c++
-    int n = a.size(), m = b.size();
+ #+begin_src c++
+  int n = a.size(), m = b.size();
   int i = 0, j = 0, k = 0;
   vector<int> c(n+m);
   while(i < n || j < m) {
@@ -162,7 +162,7 @@ fill=green!30]
     else
       c[k++] = b[j++];
   }
- #+END_SRC
+ #+end_src
  #+begin_export latex
  \begin{figure}[ht]
     \centering
@@ -173,7 +173,7 @@ fill=green!30]
  #+end_export
  Each iteration i+j increases by one, total iterations = n + m, hence O(n + m).
 3. Divide and Conquer : Assuming input array /a/ is divided into two subarrays /b/ and /c/.
- #+BEGIN_SRC c++
+ #+begin_src c++
   sort(a):
     if(a.size() < 2) return a;
     auto b = a[0 .. n/2-1]; // 
@@ -181,7 +181,7 @@ fill=green!30]
     b = sort(b); // This is T(n/2)
     c = sort(c); // This is T(n/2)
     return merge(b, c) // O(n)
- #+END_SRC
+ #+end_src
    Here T(n) = 2*T(n/2) + O(n)
 *** TODO Master Theorem
 *** Tasks
@@ -237,11 +237,11 @@ fill=green!30]
   2. Remove minimum element: =rem_min(x)=
 - Array based construction:
   Let first /n/ elements of arrray /a/ form the heap, then =insert(x)= would add /x/ at index /n/ and increment heap size.
-  #+BEGIN_SRC c++
+  #+begin_src c++
     def insert(x): // O(1)
       a[n] = x;
       n++;
-  #+END_SRC
+  #+end_src
   For the removal of minimum element, first we find its index, then swap it with the last element and pop it. (The swap's done so that the array is contiguous after the removal).
   #+begin_src c++
     j = 0;
@@ -256,7 +256,7 @@ fill=green!30]
 - Enter _Binary Heap_ and it brings alongwith it O(log n) complexity for both insertion and removal.
 - Each node has atmost 2 elements.
 - The structure of a binary tree is fixed by the number of elements. (will be explained later)
-#+BEGIN_EXPORT latex
+#+begin_export latex
 \begin{center}
 \begin{forest}
  [0, for tree={circle,draw}
@@ -265,7 +265,7 @@ fill=green!30]
     [2 [5] [6]]] 
 \end{forest}
 \end{center}
-#+END_EXPORT
+#+end_export
 - _Heap Property_: Each element is less than or equal to its children.
 - Generally a binary tree is stored in the form of a /class/ node and pointers to its left and right child.
 - Indices of a heap are used to identify parent-child positions in an array.
@@ -366,7 +366,7 @@ What is a randomized algorithm? An additional random input is fed into the algor
 - An intuitive way to think about this is that after three picks, (every third pick), one gets a good split which decreases the size of array by a constant factor ($\leq 2n/3$).
 - Depth of this recustion: $3 log_{\frac{3}{2}} n$. Hence total time complexity is n lg n.
 - To pick elements closer to center of array, take 3 random values and choose the middle one as /x/.
-- _Note_ that the time complexity is calculated for /input's worst case/ not /split's/ i.e. random input is still random.
+- *Note* that the time complexity is calculated for /input's worst case/ not /split's/ i.e. random input is still random.
 
 *** Order Statistics
 Given an array and an index, value at that index in the sorted array would be?
@@ -396,7 +396,7 @@ Given an array and an index, value at that index in the sorted array would be?
   #+end_src
 - Difference with quicksort lies in the fact that in the latter two recursive calls are made whereas here only one is.
 - /Complexity/: $(n + \frac{2}{3}n + \frac{4}{9}n + ...) = 3n\ \implies$ O(n).
-*** Blum-Floyd-Pratt-Rivest-Tarjan 
+*** Blum-Floyd-Pratt-Rivest-Tarjan
 - /x/ is chosen deterministically instead of randomly.
 - Taken median element of each block after sorting the block. [T(n) = n + T($\frac{n}{5}$)]
 #+begin_export latex
@@ -550,7 +550,7 @@ A basic technique to find something in a list of _sorted_ things.
   #+begin_src c++
   bool good(int x) {
     // no. of rect in width = x/w
-    // no. of rect in heigt = x/h
+    // no. of rect in height = x/h
     return (x/w)*(y/h) >= n
   }
 
